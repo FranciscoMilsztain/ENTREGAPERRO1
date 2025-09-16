@@ -1,3 +1,5 @@
+//MILSZTAIN, MACIA, REBORATTI, COLOMBRES
+
 #include <Wire.h>
 #include <Adafruit_AHTX0.h>
 
