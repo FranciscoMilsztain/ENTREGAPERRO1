@@ -1,0 +1,40 @@
+#include <Wire.h>
+#include <Adafruit_AHTX0.h>
+
+Adafruit_AHTX0 aht;
+float lectemp;
+float lechum;
+
+void setup() 
+{
+  Serial.begin(115200);
+
+  // Inicio del AHT
+  if (!aht.begin()) { 
+    Serial.println("No se detectó AHTX0. Revisar conexiones.");
+    while (1); // Detener ejecución si falla
+  }
+  Serial.println("AHTX0 detectado correctamente");
+}
+
+void loop() 
+{
+  // Variables para eventos
+  sensors_event_t humidity, temp;
+  aht.getEvent(&humidity, &temp);
+  
+  // Lecturas
+  lectemp = temp.temperature;           // Temperatura en °C
+  lechum = humidity.relative_humidity;  // Humedad en %
+
+  // Mostrar en consola
+  Serial.print("Lectura temp: ");
+  Serial.print(lectemp);
+  Serial.println(" °C");
+
+  Serial.print("Lectura hum: ");
+  Serial.print(lechum);
+  Serial.println(" %");
+
+  delay(1000); // Esperar 1 segundo entre lecturas
+}
