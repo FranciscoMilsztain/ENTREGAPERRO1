@@ -682,6 +682,7 @@ void Task2code(void* pvParameters)
       bot.sendMessage(CHAT_ID, "Presionar el boton 5 al mandar su mensaje", "");
   
       ESTADO = PANTALLA1;
+      lcd_1.clear();
       
       break;
   
@@ -689,7 +690,6 @@ void Task2code(void* pvParameters)
       case PANTALLA1:
   
   //***DISPLAY***
-//      lcd_1.clear();
       lcd_1.setCursor(0, 0);
   
       if (lectura_seleccionada == 1)
@@ -859,6 +859,10 @@ void Task2code(void* pvParameters)
       {
         ESTADO = CAMBIO_LECTURA;
       }
+
+      lcd_1.setCursor(14, 1);
+      lcd_1.print(" ");
+      lcd_1.clear();
   
       break;
   
